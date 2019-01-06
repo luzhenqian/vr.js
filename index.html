@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index</title>
+</head>
+<body>
+	<div id="app"></div>
+	<script src='./vr.js'></script>
+	<script>
+		var test = new VR({
+			app : 'app',
+			state:{
+				input1:'',
+				input2:'http://',
+				a:[]
+			},
+			methods:{
+				aArray(){
+					return this.state.a.map(item=>{
+						return div(a({text:item.text,href:item.href}),span(item.href),br());
+					});
+				},
+				addSite(){
+					this.state.a.push({text:this.state.input1,href:this.state.input2});
+					this.setState({
+						a:this.state.a
+					});
+				},
+				delSite(){
+					this.state.a.forEach((k,index)=>{
+						if(k.text === this.state.input1){
+							this.state.a.splice(index,1);
+						}
+					})
+					const a = this.state.a
+					this.setState({
+						a
+					})
+				}
+			},
+			didMount(){
+				console.log('执行了didMount');
+			},
+			render(){
+				return(
+					div(
+						label('输入网站'),
+						input({
+							placeholder:'输入网站',
+							bind:'input1',
+						}),
+						br(),
+						label('输入网址'),
+						input({
+							placeholder:'输入网址',
+							bind:'input2',
+						}),
+						br(),
+						button('添加',{
+							onclick:this.addSite,
+						}),
+						button('删除',{
+							onclick:this.delSite,
+						}),
+						this.aArray(),
+						)
+					)
+			}
+		});
+	</script>
+</body>
+</html>
