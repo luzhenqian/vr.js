@@ -12,7 +12,7 @@ vr.js
 全局引用：
 
 ```html
-<script type="text/javascript" src="iview.min.js"></script>
+<script type="text/javascript" src="./vr.js"></script>
 ```
 
 ## 使用
