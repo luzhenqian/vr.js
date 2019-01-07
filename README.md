@@ -38,4 +38,4 @@ vr.js
 </html>
 ```
 
-Copyright (c) 2019-present, rv.js
+Copyright (c) 2019-present, vr.js
